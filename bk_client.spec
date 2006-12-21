@@ -7,8 +7,10 @@ License:	No Whining License
 Group:		Development/Version Control
 Source0:	http://www.bitmover.com/bk-client.shar
 # Source0-md5:	fd22644204abc0c9d1a35b5d78b654f5
+Patch0:		%{name}-names.patch
 URL:		http://www.bitkeeper.com/
 BuildRequires:	zlib-devel
+Requires:	gzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -20,6 +22,8 @@ Darmowy klient BitKeeper.
 %prep
 %setup -q -T -c
 /bin/sh %{SOURCE0}
+cd bk_client-%{version}
+%patch0 -p1
 
 %build
 cd bk_client-%{version}
@@ -31,7 +35,9 @@ cd bk_client-%{version}
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_bindir}
 
-install bk_client-%{version}/sfioball $RPM_BUILD_ROOT%{_bindir}
+install bk_client-%{version}/sfio $RPM_BUILD_ROOT%{_bindir}/bk_sfio
+install bk_client-%{version}/sfioball $RPM_BUILD_ROOT%{_bindir}/bk_sfioball
+install bk_client-%{version}/update $RPM_BUILD_ROOT%{_bindir}/bk_update
 
 %clean
 rm -rf $RPM_BUILD_ROOT
