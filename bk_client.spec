@@ -1,5 +1,5 @@
 Summary:	BitKeeper client
-Summary(pl):	Klient BitKeeper
+Summary(pl):	Klient BitKeepera
 Name:		bk_client
 Version:	1.1
 Release:	1
@@ -17,17 +17,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Free BitKeeper client.
 
 %description -l pl
-Darmowy klient BitKeeper.
+Darmowy klient BitKeepera.
 
 %prep
-%setup -q -T -c
+%setup -q -c -T
 /bin/sh %{SOURCE0}
 cd bk_client-%{version}
 %patch0 -p1
 
 %build
-cd bk_client-%{version}
-%{__make} \
+%{__make} -C bk_client-%{version} \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}"
 
