@@ -1,16 +1,17 @@
 Summary:	BitKeeper client
 Summary(pl):	Klient BitKeepera
 Name:		bk_client
-Version:	1.1
+Version:	2.0
 Release:	1
 License:	No Whining License
 Group:		Development/Version Control
-Source0:	http://www.bitmover.com/bk-client.shar
-# Source0-md5:	fd22644204abc0c9d1a35b5d78b654f5
-Patch0:		%{name}-names.patch
+Source0:	http://www.bitmover.com/bk-client%{version}.shar
+# Source0-md5:	14680e84d0b0b359995643d2a1fd57ff
 URL:		http://www.bitkeeper.com/
 BuildRequires:	zlib-devel
 Requires:	gzip
+Requires:	patch
+Requires:	tar
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -22,11 +23,9 @@ Darmowy klient BitKeepera.
 %prep
 %setup -q -c -T
 /bin/sh %{SOURCE0}
-cd bk_client-%{version}
-%patch0 -p1
 
 %build
-%{__make} -C bk_client-%{version} \
+%{__make} -C bk-client%{version} \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}"
 
@@ -34,9 +33,7 @@ cd bk_client-%{version}
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_bindir}
 
-install bk_client-%{version}/sfio $RPM_BUILD_ROOT%{_bindir}/bk_sfio
-install bk_client-%{version}/sfioball $RPM_BUILD_ROOT%{_bindir}/bk_sfioball
-install bk_client-%{version}/update $RPM_BUILD_ROOT%{_bindir}/bk_update
+install bk-client%{version}/bkf $RPM_BUILD_ROOT%{_bindir}/bkf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
