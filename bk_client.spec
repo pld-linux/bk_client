@@ -1,5 +1,5 @@
 Summary:	BitKeeper client
-Summary(pl.UTF-8):   Klient BitKeepera
+Summary(pl.UTF-8):	Klient BitKeepera
 Name:		bk_client
 Version:	2.0
 Release:	1
