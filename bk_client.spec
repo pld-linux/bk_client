@@ -1,5 +1,5 @@
 Summary:	BitKeeper client
-Summary(pl):	Klient BitKeepera
+Summary(pl.UTF-8):   Klient BitKeepera
 Name:		bk_client
 Version:	2.0
 Release:	1
@@ -17,7 +17,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Free BitKeeper client.
 
-%description -l pl
+%description -l pl.UTF-8
 Darmowy klient BitKeepera.
 
 %prep
